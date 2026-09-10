@@ -126,40 +126,99 @@ a {
   min-width: 0;
 }
 
-.brand-mark {
+.lily-mark {
+  --petal-height: 16px;
+  --petal-width: 11px;
+  --petal-top: 8px;
+  --side-top: 13px;
+  --stem-height: 19px;
+  --stem-top: 20px;
   align-items: center;
   background: var(--navy-900);
   border: 1px solid rgba(182, 154, 99, 0.48);
-  color: var(--cream-50);
   display: inline-flex;
   flex: 0 0 auto;
-  font-family: var(--serif);
-  font-size: 1rem;
-  font-weight: 700;
   height: 42px;
   justify-content: center;
   line-height: 1;
+  overflow: hidden;
   position: relative;
   width: 42px;
 }
 
-.brand-mark::after {
-  background: var(--brass);
+.lily-mark::before {
+  border: 1px solid var(--brass);
+  border-bottom: 0;
+  border-radius: 60% 60% 8% 8%;
   content: "";
-  height: 1px;
-  left: 8px;
+  height: var(--petal-height);
+  left: 50%;
   position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: rotate(-42deg);
+  top: var(--petal-top);
+  transform: translateX(-50%);
+  width: var(--petal-width);
 }
 
-.brand-mark.large {
+.lily-mark::after {
+  border-left: 1px solid rgba(251, 248, 241, 0.78);
+  content: "";
+  height: var(--stem-height);
+  left: 50%;
+  position: absolute;
+  top: var(--stem-top);
+  transform: translateX(-50%);
+}
+
+.lily-mark span {
+  height: 0;
+  left: 50%;
+  position: absolute;
+  top: var(--side-top);
+  width: 0;
+}
+
+.lily-mark span::before,
+.lily-mark span::after {
+  border: 1px solid var(--brass);
+  border-bottom: 0;
+  border-radius: 70% 70% 12% 12%;
+  content: "";
+  height: var(--petal-height);
+  position: absolute;
+  top: 0;
+  transform-origin: bottom center;
+  width: var(--petal-width);
+}
+
+.lily-mark span::before {
+  left: calc(var(--petal-width) * -0.95);
+  transform: rotate(-34deg);
+}
+
+.lily-mark span::after {
+  left: calc(var(--petal-width) * -0.05);
+  transform: rotate(34deg);
+}
+
+.lily-mark.large {
+  --petal-height: 24px;
+  --petal-width: 16px;
+  --petal-top: 12px;
+  --side-top: 19px;
+  --stem-height: 30px;
+  --stem-top: 30px;
   background: transparent;
   border-color: rgba(251, 248, 241, 0.45);
-  color: var(--cream-50);
   height: 64px;
   width: 64px;
+}
+
+.lily-mark.large::before {
+  border-color: var(--cream-50);
+}
+
+.lily-mark.large::after {
+  border-left-color: rgba(251, 248, 241, 0.78);
 }
 
 .brand-name {
@@ -257,7 +316,7 @@ a {
 
 .hero::before {
   color: rgba(16, 35, 59, 0.045);
-  content: "GP";
+  content: "lírio";
   font-family: var(--serif);
   font-size: 20rem;
   font-weight: 700;
@@ -382,22 +441,71 @@ h3 {
   width: 100%;
 }
 
-.hero-monogram {
+.hero-lily {
   align-items: center;
   background: rgba(7, 17, 31, 0.88);
   border: 1px solid rgba(242, 237, 227, 0.3);
   bottom: 1.2rem;
-  color: var(--cream-50);
   display: flex;
-  font-family: var(--serif);
-  font-size: 4rem;
-  font-weight: 700;
   height: 124px;
   justify-content: center;
   line-height: 1;
   position: absolute;
   right: 1.2rem;
   width: 124px;
+}
+
+.hero-lily::before {
+  border: 1px solid var(--cream-50);
+  border-bottom: 0;
+  border-radius: 68% 68% 10% 10%;
+  content: "";
+  height: 46px;
+  position: absolute;
+  top: 25px;
+  width: 30px;
+}
+
+.hero-lily::after {
+  background: rgba(242, 237, 227, 0.72);
+  content: "";
+  height: 42px;
+  left: 50%;
+  position: absolute;
+  top: 68px;
+  transform: translateX(-50%);
+  width: 1px;
+}
+
+.hero-lily span {
+  height: 0;
+  left: 50%;
+  position: absolute;
+  top: 42px;
+  width: 0;
+}
+
+.hero-lily span::before,
+.hero-lily span::after {
+  border: 1px solid var(--brass);
+  border-bottom: 0;
+  border-radius: 72% 72% 12% 12%;
+  content: "";
+  height: 44px;
+  position: absolute;
+  top: 0;
+  transform-origin: bottom center;
+  width: 28px;
+}
+
+.hero-lily span::before {
+  left: -27px;
+  transform: rotate(-35deg);
+}
+
+.hero-lily span::after {
+  left: -1px;
+  transform: rotate(35deg);
 }
 
 .intro-strip {
@@ -853,10 +961,38 @@ h3 {
     min-height: 360px;
   }
 
-  .hero-monogram {
-    font-size: 2.6rem;
+  .hero-lily {
     height: 88px;
     width: 88px;
+  }
+
+  .hero-lily::before {
+    height: 31px;
+    top: 17px;
+    width: 21px;
+  }
+
+  .hero-lily::after {
+    height: 30px;
+    top: 48px;
+  }
+
+  .hero-lily span {
+    top: 29px;
+  }
+
+  .hero-lily span::before,
+  .hero-lily span::after {
+    height: 30px;
+    width: 19px;
+  }
+
+  .hero-lily span::before {
+    left: -18px;
+  }
+
+  .hero-lily span::after {
+    left: -1px;
   }
 
   .intro-strip-inner {
@@ -922,7 +1058,7 @@ h3 {
 }
 
 @media (max-width: 420px) {
-  .brand-mark {
+  .lily-mark {
     height: 38px;
     width: 38px;
   }
